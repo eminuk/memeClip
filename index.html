@@ -2,20 +2,33 @@
 <html lang="kr">
 <head>
     <meta charset="utf-8" />
-	<title></title>
+	<title>memeClip</title>
     <style type="text/css">
-        #container { width:480px; margin: 10px auto; }
+        body { font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; }
+        #header { width:500px; padding:10px; margin: 10px auto; background-color:#2c95e4; border-radius:10px; }
+        #header h1 { margin: 10px 0; text-align:center; color:#ffffff; }
+        #container { width:500px; padding:10px; margin: 10px auto; background-color:#eff0f2; border-radius:10px; }
+        #drop_zone { 
+            border:2px dashed #bbb; border-radius:5px; padding:25px; text-align:center; 
+            color:#5b9bd5; background-color:#e5e7ea; font-weight:bolder; 
+        }
         
-        #drop_zone { border:2px dashed #bbb; border-radius:5px; padding:25px; text-align:center; color:#bbb; }
-        
+        .wrap { margin-bottom:20px; }
         .wrap ul { list-style:none; margin:10px 0; padding:0; }
         .wrap ul:after { content:""; display:block; clear:both; }
         .wrap li { box-sizing:border-box; margin:0; padding: 0; border: 0; float: left; }
-        .wrap.tab li { width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; }
-        .wrap.tab li.select { background-color:#bbb; }
+        
+        .wrap.tab li { 
+            width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; 
+            background-color:#44546A; color:#eff0f2; border:#eff0f2 solid 1px;
+        }
+        .wrap.tab li:hover  { background-color:#55aae9 !important; cursor:pointer; }
+        .wrap.tab li.select { background-color:#1f6189; }
+        
         .wrap.img ul { display:none; }
         .wrap.img ul.select { display:block; }
-        .wrap.img li { margin:5px; }
+        .wrap.img li { padding:5px; }
+        .wrap.img li:hover  { background-color:#55aae9 !important; cursor:pointer; }
         .wrap.img img { width:110px; }
         
     </style>
@@ -115,6 +128,11 @@
 	</script>
 </head>
 <body>
+    <div id="header">
+        <h1>memeClip</h1>
+        <!--<h1><a href="https://github.com/eminuk/memeClip">memeClip</a></h1>-->
+    </div>
+
     <div id="container">
         <div id="drop_zone">Drop json files here</div>
         <hr />
