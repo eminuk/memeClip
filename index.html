@@ -4,16 +4,58 @@
     <meta charset="utf-8" />
 	<title></title>
     <style type="text/css">
+        #container { width:480px; margin: 10px auto; }
+        
         #drop_zone { border:2px dashed #bbb; border-radius:5px; padding:25px; text-align:center; color:#bbb; }
+        
+        .wrap ul { list-style:none; margin:10px 0; padding:0; }
+        .wrap ul:after { content:""; display:block; clear:both; }
+        .wrap li { box-sizing:border-box; margin:0; padding: 0; border: 0; float: left; }
+        .wrap.tab li { width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; }
+        .wrap.tab li.select { background-color:#bbb; }
+        .wrap.img ul { display:none; }
+        .wrap.img ul.select { display:block; }
+        .wrap.img li { margin:5px; }
+        .wrap.img img { width:110px; }
+        
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(function () {
-            console.log("ee");
+            // console.log("ee");
 
             // $.getJSON("sample.json", function(json) {
             //     console.log(json);
             // });
+
+            var json_obj = [
+                {
+                    "name": "sample_type_l",
+                    "is_use": false,
+                    "type": "list",
+                    "num_start": "01",
+                    "num_end": "09",
+                    "url": "./sample/coin_{$num}.png"
+                },
+                {
+                    "name": "sample_type_c",
+                    "is_use": true,
+                    "type": "custom",
+                    "list": [
+                        "./sample/coin_01.png",
+                        "./sample/coin_02.png",
+                        "./sample/coin_03.png",
+                        "./sample/coin_04.png",
+                        "./sample/coin_05.png",
+                        "./sample/coin_06.png",
+                        "./sample/coin_07.png",
+                        "./sample/coin_08.png",
+                        "./sample/coin_09.png"
+                    ]
+                }
+            ]
+
+            randerMemeList(json_obj);
         });
 
         window.onload = function () {
@@ -62,11 +104,47 @@
             console.log(json_obj);
         }
 
-        
+        function copyToClipboard(clip_text) {
+            const temp_ele = document.createElement('textarea');
+            temp_ele.value = clip_text;
+            document.body.appendChild(temp_ele);
+            temp_ele.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp_ele);
+        }
 	</script>
 </head>
 <body>
-    <div id="drop_zone">Drop files here</div>
-	initializing...
+    <div id="container">
+        <div id="drop_zone">Drop json files here</div>
+        <hr />
+
+        <div id="wrap_tab" class="wrap tab">
+            <ul>
+                <li class="select">coin</li>
+                <li>coin</li>
+                <li>coin</li>
+                <li>coin</li>
+                <li>coin</li>
+            </ul>
+        </div>
+
+        <div id="wrap_img" class="wrap img">
+            <ul class="select">
+                <li><img src="./sample/coin_01.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_02.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_03.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_04.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_05.png" onclick="copyToClipboard(this.src);" /></li>
+            </ul>
+            <ul>
+                <li><img src="./sample/coin_06.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_07.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_08.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_09.png" onclick="copyToClipboard(this.src);" /></li>
+                <li><img src="./sample/coin_01.png" onclick="copyToClipboard(this.src);" /></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
