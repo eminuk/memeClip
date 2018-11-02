@@ -1,45 +1,30 @@
 [
     {
-        "name": "sample_type_l",
-        "thumb": null,
-        "is_use": false,
-        "type": "list",
-        "num_start": "01",
-        "num_end": "09",
-        "url": "./sample/coin_{$num}.png"
-    },
-    {
         "name": "sample_type_c",
-        "thumb": null,
-        "is_use": true,
-        "type": "custom",
         "list": [
-            "./sample/coin_01.png",
-            "./sample/coin_02.png",
-            "./sample/coin_03.png",
-            "./sample/coin_04.png",
-            "./sample/coin_05.png",
-            "./sample/coin_06.png",
-            "./sample/coin_07.png",
-            "./sample/coin_08.png",
-            "./sample/coin_09.png"
+            "https://eminuk.github.io/memeClip/sample/coin_01.png",
+            "https://eminuk.github.io/memeClip/sample/coin_02.png",
+            "https://eminuk.github.io/memeClip/sample/coin_03.png",
+            "https://eminuk.github.io/memeClip/sample/coin_04.png",
+            "https://eminuk.github.io/memeClip/sample/coin_05.png",
+            "https://eminuk.github.io/memeClip/sample/coin_06.png",
+            "https://eminuk.github.io/memeClip/sample/coin_07.png",
+            "https://eminuk.github.io/memeClip/sample/coin_08.png",
+            "https://eminuk.github.io/memeClip/sample/coin_09.png"
         ]
     },
     {
         "name": "sample_type_c2",
-        "thumb": null,
-        "is_use": true,
-        "type": "custom",
         "list": [
-            "./sample/coin_09.png",
-            "./sample/coin_08.png",
-            "./sample/coin_07.png",
-            "./sample/coin_06.png",
-            "./sample/coin_05.png",
-            "./sample/coin_04.png",
-            "./sample/coin_03.png",
-            "./sample/coin_02.png",
-            "./sample/coin_01.png"
+            "https://eminuk.github.io/memeClip/sample/coin_09.png",
+            "https://eminuk.github.io/memeClip/sample/coin_08.png",
+            "https://eminuk.github.io/memeClip/sample/coin_07.png",
+            "https://eminuk.github.io/memeClip/sample/coin_06.png",
+            "https://eminuk.github.io/memeClip/sample/coin_05.png",
+            "https://eminuk.github.io/memeClip/sample/coin_04.png",
+            "https://eminuk.github.io/memeClip/sample/coin_03.png",
+            "https://eminuk.github.io/memeClip/sample/coin_02.png",
+            "https://eminuk.github.io/memeClip/sample/coin_01.png"
         ]
     }
 ]
