@@ -92,10 +92,6 @@
             img_obj.empty();
 
             for (var i = 0, len = json_obj.length; i < len; i++) {
-                if (json_obj[i].type !== 'custom') {
-                    continue;
-                }
-
                 // add tab
                 tab_obj.append(
                     $("<li/>", {
@@ -150,7 +146,7 @@
     </div>
 
     <div id="footer">
-        Visit to GitHub: <a href="https://github.com/eminuk/memeClip">memeClip</a>
+        Visit to GitHub: <a href="https://github.com/eminuk/memeClip" target="_blank">memeClip</a>
     </div>
 </body>
 </html>
