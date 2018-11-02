@@ -17,3 +17,4 @@
 - <https://iccpic.com/free-icons/coin>
 - <https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f>
 - <https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript>
+- <https://jquery.com/>

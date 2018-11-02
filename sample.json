@@ -1,6 +1,7 @@
 [
     {
         "name": "sample_type_l",
+        "thumb": null,
         "is_use": false,
         "type": "list",
         "num_start": "01",
@@ -9,6 +10,7 @@
     },
     {
         "name": "sample_type_c",
+        "thumb": null,
         "is_use": true,
         "type": "custom",
         "list": [
@@ -25,6 +27,7 @@
     },
     {
         "name": "sample_type_c2",
+        "thumb": null,
         "is_use": true,
         "type": "custom",
         "list": [
