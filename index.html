@@ -2,67 +2,52 @@
 <html lang="kr">
 <head>
     <meta charset="utf-8" />
-	<title></title>
+	<title>memeClip</title>
     <style type="text/css">
-        #container { width:480px; margin: 10px auto; }
+        body { font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; }
+        #header { width:500px; padding:10px; margin: 10px auto; background-color:#2c95e4; border-radius:10px; }
+        #header h1 { margin: 10px 0; text-align:center; color:#ffffff; }
+        #footer { 
+            width:500px; padding:10px; margin: 10px auto; background-color:#c8e9ff; border-radius:10px; 
+            text-align:center; color:#44546A; font-weight:bold;
+        }
+        #footer a { color:#5b9bd5; }
         
-        #drop_zone { border:2px dashed #bbb; border-radius:5px; padding:25px; text-align:center; color:#bbb; }
+        #container { width:500px; padding:10px; margin: 10px auto; background-color:#eff0f2; border-radius:10px; }
+        #drop_zone { 
+            border:2px dashed #bbb; border-radius:5px; padding:25px; text-align:center; 
+            color:#5b9bd5; background-color:#e5e7ea; font-weight:bolder; 
+        }
         
+        .wrap { margin-bottom:20px; }
         .wrap ul { list-style:none; margin:10px 0; padding:0; }
         .wrap ul:after { content:""; display:block; clear:both; }
         .wrap li { box-sizing:border-box; margin:0; padding: 0; border: 0; float: left; }
-        .wrap.tab li { width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; }
-        .wrap.tab li.select { background-color:#bbb; }
+        
+        .wrap.tab li { 
+            width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; 
+            background-color:#44546A; color:#eff0f2; border:#eff0f2 solid 1px;
+        }
+        .wrap.tab li:hover  { background-color:#55aae9 !important; cursor:pointer; }
+        .wrap.tab li.select { background-color:#1f6189; }
+        
         .wrap.img ul { display:none; }
         .wrap.img ul.select { display:block; }
-        .wrap.img li { margin:5px; }
+        .wrap.img li { padding:5px; }
+        .wrap.img li:hover  { background-color:#55aae9 !important; cursor:pointer; }
         .wrap.img img { width:110px; }
         
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(function () {
-            // console.log("ee");
-
-            // $.getJSON("sample.json", function(json) {
-            //     console.log(json);
-            // });
-
-            var json_obj = [
-                {
-                    "name": "sample_type_l",
-                    "is_use": false,
-                    "type": "list",
-                    "num_start": "01",
-                    "num_end": "09",
-                    "url": "./sample/coin_{$num}.png"
-                },
-                {
-                    "name": "sample_type_c",
-                    "is_use": true,
-                    "type": "custom",
-                    "list": [
-                        "./sample/coin_01.png",
-                        "./sample/coin_02.png",
-                        "./sample/coin_03.png",
-                        "./sample/coin_04.png",
-                        "./sample/coin_05.png",
-                        "./sample/coin_06.png",
-                        "./sample/coin_07.png",
-                        "./sample/coin_08.png",
-                        "./sample/coin_09.png"
-                    ]
-                }
-            ]
-
-            randerMemeList(json_obj);
-        });
-
-        window.onload = function () {
             // Setup the dnd listeners.
             var dropZone = document.getElementById('drop_zone');
             dropZone.addEventListener('dragover', handleDragOver, false);
             dropZone.addEventListener('drop', handleFileSelect, false);
+        });
+
+        window.onload = function () {
         }
 
         function handleDragOver(evt) {
@@ -101,7 +86,40 @@
             reader.readAsText(json_file);
         }
         function randerMemeList(json_obj) {
-            console.log(json_obj);
+            const tab_obj = $("#wrap_tab ul");
+            const img_obj = $("#wrap_img");
+            tab_obj.empty();
+            img_obj.empty();
+
+            for (var i = 0, len = json_obj.length; i < len; i++) {
+                if (json_obj[i].type !== 'custom') {
+                    continue;
+                }
+
+                // add tab
+                tab_obj.append(
+                    $("<li/>", {
+                        text: json_obj[i].name
+                    }).click(function (evt) { 
+                        tab_obj.children("li").removeClass("select");
+                        $(this).addClass("select");
+                        img_obj.children("ul").removeClass("select");
+                        img_obj.children("ul").eq($(this).index()).addClass("select");
+                    })
+                );
+
+                // add image
+                let ul_obj = $("<ul/>", {});
+                for (var j = 0, jlen = json_obj[i].list.length; j < jlen; j++) {
+                    ul_obj.append($("<li/>").append($("<img/>", {
+                            src: json_obj[i].list[j]
+                        }).click(function (evt) {
+                            copyToClipboard(this.src);
+                        })
+                    ));
+                }
+                img_obj.append(ul_obj);
+            }
         }
 
         function copyToClipboard(clip_text) {
@@ -115,36 +133,24 @@
 	</script>
 </head>
 <body>
+    <div id="header">
+        <h1>memeClip</h1>
+    </div>
+
     <div id="container">
-        <div id="drop_zone">Drop json files here</div>
+        <div id="drop_zone">Drop memeClip's json files here</div>
         <hr />
 
         <div id="wrap_tab" class="wrap tab">
-            <ul>
-                <li class="select">coin</li>
-                <li>coin</li>
-                <li>coin</li>
-                <li>coin</li>
-                <li>coin</li>
-            </ul>
+            <ul></ul>
         </div>
 
         <div id="wrap_img" class="wrap img">
-            <ul class="select">
-                <li><img src="./sample/coin_01.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_02.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_03.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_04.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_05.png" onclick="copyToClipboard(this.src);" /></li>
-            </ul>
-            <ul>
-                <li><img src="./sample/coin_06.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_07.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_08.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_09.png" onclick="copyToClipboard(this.src);" /></li>
-                <li><img src="./sample/coin_01.png" onclick="copyToClipboard(this.src);" /></li>
-            </ul>
         </div>
+    </div>
+
+    <div id="footer">
+        Visit to GitHub: <a href="https://github.com/eminuk/memeClip">memeClip</a>
     </div>
 </body>
 </html>

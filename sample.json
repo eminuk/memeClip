@@ -1,6 +1,7 @@
 [
     {
         "name": "sample_type_l",
+        "thumb": null,
         "is_use": false,
         "type": "list",
         "num_start": "01",
@@ -9,6 +10,7 @@
     },
     {
         "name": "sample_type_c",
+        "thumb": null,
         "is_use": true,
         "type": "custom",
         "list": [
@@ -21,6 +23,23 @@
             "./sample/coin_07.png",
             "./sample/coin_08.png",
             "./sample/coin_09.png"
+        ]
+    },
+    {
+        "name": "sample_type_c2",
+        "thumb": null,
+        "is_use": true,
+        "type": "custom",
+        "list": [
+            "./sample/coin_09.png",
+            "./sample/coin_08.png",
+            "./sample/coin_07.png",
+            "./sample/coin_06.png",
+            "./sample/coin_05.png",
+            "./sample/coin_04.png",
+            "./sample/coin_03.png",
+            "./sample/coin_02.png",
+            "./sample/coin_01.png"
         ]
     }
 ]
