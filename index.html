@@ -73,6 +73,7 @@
             // Only process json files.
             if (json_file.type != 'application/json') {
                 alert('Only support json file.');
+                console.log(json_file, json_file.type);
                 return false;
             }
 
