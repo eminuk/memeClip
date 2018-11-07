@@ -71,11 +71,10 @@
             var json_file = evt.dataTransfer.files[0]; 
 
             // Only process json files.
-            if (json_file.type != 'application/json') {
-                alert('Only support json file.');
-                console.log(json_file, json_file.type);
-                return false;
-            }
+            // if (!json_file.name.match('.*\.json$')) {
+            //     alert('Only support json file.');
+            //     return false;
+            // }
 
             // Read in data as a text string.
             var reader = new FileReader();
