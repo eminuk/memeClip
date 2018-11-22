@@ -45,6 +45,8 @@
             var dropZone = document.getElementById('drop_zone');
             dropZone.addEventListener('dragover', handleDragOver, false);
             dropZone.addEventListener('drop', handleFileSelect, false);
+
+            randerMemeList();
         });
 
         window.onload = function () {
@@ -81,15 +83,24 @@
             reader.onload = function (eve) {
                 let text = eve.target.result;
                 var json_obj = JSON.parse(text);
-                randerMemeList(json_obj);
+                if (!confirm('Previous data will be lost. Would you like to continue?')) {
+                    return false;
+                }
+                localStorage.setItem('memejson', JSON.stringify(json_obj));
+                randerMemeList();
             };
             reader.readAsText(json_file);
         }
-        function randerMemeList(json_obj) {
+        function randerMemeList() {
+            const json_obj = JSON.parse(localStorage.getItem('memejson'));
             const tab_obj = $("#wrap_tab ul");
             const img_obj = $("#wrap_img");
             tab_obj.empty();
             img_obj.empty();
+
+            if (!json_obj || typeof json_obj != 'object') {
+                return false;
+            }
 
             for (var i = 0, len = json_obj.length; i < len; i++) {
                 // add tab
