@@ -26,38 +26,38 @@
     1. *name* 항목은 짤방의 탭 이름으로 사용되며 사용자가 구분 할 수 있는 이름을 *String* 형태로 입력해 주시면 됩니다.
     1. *list* 항목에는 수집하신 *짤방*의 URL을 *Array* 형태로 입력해 주시면 됩니다.
       (**짤방 사용시 저작권이 있는 이미지 사용을 주의해 주세요.**)
-  ~~~ json
-[
-    {
-        "name": "sample_type_c", 
-        "list": [
-            "https://eminuk.github.io/memeClip/sample/coin_01.png",
-            "https://eminuk.github.io/memeClip/sample/coin_02.png",
-            "https://eminuk.github.io/memeClip/sample/coin_03.png",
-            "https://eminuk.github.io/memeClip/sample/coin_04.png",
-            "https://eminuk.github.io/memeClip/sample/coin_05.png",
-            "https://eminuk.github.io/memeClip/sample/coin_06.png",
-            "https://eminuk.github.io/memeClip/sample/coin_07.png",
-            "https://eminuk.github.io/memeClip/sample/coin_08.png",
-            "https://eminuk.github.io/memeClip/sample/coin_09.png"
-        ]
-    },
-    {
-        "name": "sample_type_c2",
-        "list": [
-            "https://eminuk.github.io/memeClip/sample/coin_09.png",
-            "https://eminuk.github.io/memeClip/sample/coin_08.png",
-            "https://eminuk.github.io/memeClip/sample/coin_07.png",
-            "https://eminuk.github.io/memeClip/sample/coin_06.png",
-            "https://eminuk.github.io/memeClip/sample/coin_05.png",
-            "https://eminuk.github.io/memeClip/sample/coin_04.png",
-            "https://eminuk.github.io/memeClip/sample/coin_03.png",
-            "https://eminuk.github.io/memeClip/sample/coin_02.png",
-            "https://eminuk.github.io/memeClip/sample/coin_01.png"
-        ]
-    }
-]
-  ~~~
+    ~~~ json
+    [
+        {
+            "name": "sample_type_c", 
+            "list": [
+                "https://eminuk.github.io/memeClip/sample/coin_01.png",
+                "https://eminuk.github.io/memeClip/sample/coin_02.png",
+                "https://eminuk.github.io/memeClip/sample/coin_03.png",
+                "https://eminuk.github.io/memeClip/sample/coin_04.png",
+                "https://eminuk.github.io/memeClip/sample/coin_05.png",
+                "https://eminuk.github.io/memeClip/sample/coin_06.png",
+                "https://eminuk.github.io/memeClip/sample/coin_07.png",
+                "https://eminuk.github.io/memeClip/sample/coin_08.png",
+                "https://eminuk.github.io/memeClip/sample/coin_09.png"
+            ]
+        },
+        {
+            "name": "sample_type_c2",
+            "list": [
+                "https://eminuk.github.io/memeClip/sample/coin_09.png",
+                "https://eminuk.github.io/memeClip/sample/coin_08.png",
+                "https://eminuk.github.io/memeClip/sample/coin_07.png",
+                "https://eminuk.github.io/memeClip/sample/coin_06.png",
+                "https://eminuk.github.io/memeClip/sample/coin_05.png",
+                "https://eminuk.github.io/memeClip/sample/coin_04.png",
+                "https://eminuk.github.io/memeClip/sample/coin_03.png",
+                "https://eminuk.github.io/memeClip/sample/coin_02.png",
+                "https://eminuk.github.io/memeClip/sample/coin_01.png"
+            ]
+        }
+    ]
+    ~~~
 
 ### JSON 파일 등록
 1. 위에서 생성한 *JSON*파일을 페이지 상단 상단 *Drop zone*영역에 드래그&드랍 합니다.
