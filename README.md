@@ -1,5 +1,6 @@
 ![meme](https://img.shields.io/badge/meme-green.svg) ![clipboard](https://img.shields.io/badge/clipboard-green.svg) ![javaScript](https://img.shields.io/badge/JavaScript-green.svg) ![javaScript-FileReader](https://img.shields.io/badge/JavaScript-FileReader-green.svg) ![javaScript-clipboard](https://img.shields.io/badge/JavaScript-clipboard-green.svg)
 
+<img src="./docs/images/meme_md_00.png" width="100%"/>
 
 # memeClip
 <img src="./docs/images/meme_demo_2.gif" width="100%"/>
