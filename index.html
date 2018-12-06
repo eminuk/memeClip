@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="kr">
 <head>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8" />
 	<title>memeClip</title>
     <style type="text/css">
@@ -23,7 +22,7 @@
         .wrap { margin-bottom:20px; }
         .wrap ul { list-style:none; margin:10px 0; padding:0; }
         .wrap ul:after { content:""; display:block; clear:both; }
-        .wrap li { box-sizing:border-box; margin:0; padding: 0; border: 0; float: left; }
+        .wrap li { box-sizing:border-box; margin:0; padding:0; border:0; float:left; }
         
         .wrap.tab li { 
             width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; 
@@ -34,9 +33,9 @@
         
         .wrap.img ul { display:none; }
         .wrap.img ul.select { display:block; }
-        .wrap.img li { padding:5px; border-radius:5px; }
+        .wrap.img li { padding:5px; border-radius:5px; width:120px; height:120px; }
         .wrap.img li:hover  { background-color:#55aae9 !important; cursor:pointer; }
-        .wrap.img img { width:110px; }
+        .wrap.img img { max-width:110px; max-height:110px; margin: 0 auto; display:block; }
         
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -93,6 +92,7 @@
             reader.readAsText(json_file);
         }
         function randerMemeList() {
+            // const json_obj = JSON.parse(localStorage.getItem('memejson'));
             const json_obj = JSON.parse(localStorage.getItem('memejson'));
             const tab_obj = $("#wrap_tab ul");
             const img_obj = $("#wrap_img");
