@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="kr">
+<head>
+    <meta charset="utf-8" />
+	<title>memeClip</title>
+    <style type="text/css">
+        body { font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; }
+        
+        #header { width:500px; padding:10px; margin: 10px auto; background-color:#2c95e4; border-radius:10px; position:relative; }
+        #header h1 { margin: 10px 0; text-align:center; color:#ffffff; }
+        #header h5 { position:absolute; bottom:0px; right:0px; margin:10px 15px; color:#ffffff; }
+
+        #footer { 
+            width:500px; padding:10px; margin: 10px auto; background-color:#c8e9ff; border-radius:10px; 
+            text-align:center; color:#44546A; font-weight:bold;
+        }
+        #footer a { color:#5b9bd5; }
+        
+        #container { width:500px; padding:10px; margin: 10px auto; background-color:#eff0f2; border-radius:10px; }
+        #drop_zone { 
+            border:2px dashed #bbb; border-radius:5px; padding:25px; text-align:center; 
+            color:#5b9bd5; background-color:#e5e7ea; font-weight:bolder; 
+        }
+        
+        .wrap { margin-bottom:20px; }
+        .wrap ul { list-style:none; margin:10px 0; padding:0; }
+        .wrap ul:after { content:""; display:block; clear:both; }
+        .wrap li { box-sizing:border-box; margin:0; padding:0; border:0; float:left; }
+        
+        .wrap.tab li { 
+            width:160px; height:50px; text-align:center; vertical-align:middle; line-height:45px; 
+            background-color:#44546A; color:#eff0f2; border:#eff0f2 solid 1px;
+        }
+        .wrap.tab li:hover  { background-color:#55aae9 !important; cursor:pointer; }
+        .wrap.tab li.select { background-color:#1f6189; }
+        
+        .wrap.img ul { display:none; }
+        .wrap.img ul.select { display:block; }
+        .wrap.img li { padding:5px; border-radius:5px; width:120px; height:120px; display:table; }
+        .wrap.img li:hover  { background-color:#55aae9 !important; cursor:pointer; }
+        .wrap.img li div { display:table-cell; vertical-align:middle; text-align:center; }
+        .wrap.img img { max-width:110px; max-height:110px; margin: 0 auto; }
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Setup the dnd listeners.
+            var dropZone = document.getElementById('drop_zone');
+            dropZone.addEventListener('dragover', handleDragOver, false);
+            dropZone.addEventListener('drop', handleFileSelect, false);
+
+            randerMemeList();
+        });
+
+        window.onload = function () {
+        }
+
+        function handleDragOver(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            // Explicitly show this is a copy.
+            evt.dataTransfer.dropEffect = 'copy';
+        }
+        function handleFileSelect(evt) {
+            // Check for the various File API support.
+            if (!window.File && !window.FileReader && !window.FileList && !window.Blob) {
+                alert('The File APIs are not fully supported in this browser.');
+                return false;
+            }
+
+            evt.stopPropagation();
+            evt.preventDefault();
+
+            // FileList object.
+            var json_file = evt.dataTransfer.files[0]; 
+
+            // Only process json files.
+            // if (!json_file.name.match('.*\.json$')) {
+            //     alert('Only support json file.');
+            //     return false;
+            // }
+
+            // Read in data as a text string.
+            var reader = new FileReader();
+            reader.onload = function (eve) {
+                let text = eve.target.result;
+                var json_obj = JSON.parse(text);
+                if (!confirm('Previous data will be lost. Would you like to continue?')) {
+                    return false;
+                }
+                localStorage.setItem('memejson', JSON.stringify(json_obj));
+                randerMemeList();
+            };
+            reader.readAsText(json_file);
+        }
+        function randerMemeList() {
+            // const json_obj = JSON.parse(localStorage.getItem('memejson'));
+            const json_obj = JSON.parse(localStorage.getItem('memejson'));
+            const tab_obj = $("#wrap_tab ul");
+            const img_obj = $("#wrap_img");
+            tab_obj.empty();
+            img_obj.empty();
+
+            if (!json_obj || typeof json_obj != 'object') {
+                return false;
+            }
+
+            for (var i = 0, len = json_obj.length; i < len; i++) {
+                // add tab
+                tab_obj.append(
+                    $("<li/>", {
+                        text: json_obj[i].name
+                    }).click(function (evt) { 
+                        tab_obj.children("li").removeClass("select");
+                        $(this).addClass("select");
+                        img_obj.children("ul").removeClass("select");
+                        img_obj.children("ul").eq($(this).index()).addClass("select");
+                    })
+                );
+
+                // add image
+                let ul_obj = $("<ul/>", {});
+                for (var j = 0, jlen = json_obj[i].list.length; j < jlen; j++) {
+                    ul_obj.append($("<li/>").append($("<div/>").append($("<img/>", {
+                            src: json_obj[i].list[j]
+                        }).click(function (evt) {
+                            copyToClipboard(this.src);
+                        })
+                    )));
+                }
+                img_obj.append(ul_obj);
+            }
+        }
+
+        function copyToClipboard(clip_text) {
+            const temp_ele = document.createElement('textarea');
+            temp_ele.value = clip_text;
+            document.body.appendChild(temp_ele);
+            temp_ele.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp_ele);
+        }
+	</script>
+</head>
+<body>
+    <div id="header">
+        <h1>memeClip</h1>
+        <h5>v 1.2</h6>
+    </div>
+
+    <div id="container">
+        <div id="drop_zone">Drop memeClip's json files here</div>
+        <hr />
+
+        <div id="wrap_tab" class="wrap tab">
+            <ul></ul>
+        </div>
+
+        <div id="wrap_img" class="wrap img">
+        </div>
+    </div>
+
+    <div id="footer">
+        Visit to GitHub: <a href="https://github.com/eminuk/memeClip" target="_blank">memeClip</a>
+    </div>
+</body>
+</html>
