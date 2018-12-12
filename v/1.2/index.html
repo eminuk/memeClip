@@ -33,9 +33,10 @@
         
         .wrap.img ul { display:none; }
         .wrap.img ul.select { display:block; }
-        .wrap.img li { padding:5px; border-radius:5px; width:120px; height:120px; }
+        .wrap.img li { padding:5px; border-radius:5px; width:120px; height:120px; display:table; }
         .wrap.img li:hover  { background-color:#55aae9 !important; cursor:pointer; }
-        .wrap.img img { max-width:110px; max-height:110px; margin: 0 auto; display:block; }
+        .wrap.img li div { display:table-cell; vertical-align:middle; text-align:center; }
+        .wrap.img img { max-width:110px; max-height:110px; margin: 0 auto; }
         
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -119,12 +120,12 @@
                 // add image
                 let ul_obj = $("<ul/>", {});
                 for (var j = 0, jlen = json_obj[i].list.length; j < jlen; j++) {
-                    ul_obj.append($("<li/>").append($("<img/>", {
+                    ul_obj.append($("<li/>").append($("<div/>").append($("<img/>", {
                             src: json_obj[i].list[j]
                         }).click(function (evt) {
                             copyToClipboard(this.src);
                         })
-                    ));
+                    )));
                 }
                 img_obj.append(ul_obj);
             }
