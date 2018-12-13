@@ -42,9 +42,27 @@
         .wrap.img img { max-width:110px; max-height:110px; margin: 0 auto; }
         
     </style>
+    
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyB8LYFZTgf0ejeCODq_HtJs7hGzHjEuOxc",
+            authDomain: "memeclip-3911b.firebaseapp.com",
+            databaseURL: "https://memeclip-3911b.firebaseio.com",
+            projectId: "memeclip-3911b",
+            storageBucket: "memeclip-3911b.appspot.com",
+            messagingSenderId: "1092031822708"
+        };
+        firebase.initializeApp(config);
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(function () {
+            // Display version name.
+            $("#version_name").text("v 1.3b");
+
             // Setup the dnd listeners.
             var dropZone = document.getElementById('drop_zone');
             dropZone.addEventListener('dragover', handleDragOver, false);
@@ -147,7 +165,7 @@
 <body>
     <div id="header">
         <h1>memeClip</h1>
-        <h5>v 1.2</h6>
+        <h5 id="version_name"></h6>
     </div>
 
     <div id="container">
