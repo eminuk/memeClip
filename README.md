@@ -4,11 +4,11 @@
 
 ![javaScript-FileReader](https://img.shields.io/badge/JavaScript-FileReader-green.svg) ![javaScript-clipboard](https://img.shields.io/badge/JavaScript-clipboard-green.svg) ![javaScript-Local_Storage](https://img.shields.io/badge/JavaScript-Local_Storage-green.svg)
 
-<img src="./docs/images/memeSimbol.png" width="25%"/>
-
-![초기화면](./docs/images/meme_demo_2.gif)
+<img src="./docs/images/memeSimbol.png" width="25%"/> 
 
 ## memeClip 이란
+
+![초기화면](./docs/images/meme_demo_2.gif)
 
 - URL로 가지고 있는 짤방을 사용하기 편하게 해주는 SPA(Single Page Application) 입니다.
 - 짤방을 *Drag&Drop* 또는 *Copy&Paste*를 이용해서 행아웃 등의 메신저에 편리하게 사용할 수 있습니다.
